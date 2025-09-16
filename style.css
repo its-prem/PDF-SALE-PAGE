@@ -290,35 +290,30 @@ body {
 }
 
 /* ===== Responsive Fixes ===== */
-/* ===== Mobile Adjustments for Course Cards ===== */
-@media (max-width: 480px) {
-  .course-card {
-    min-height: 220px; /* reduce height on small screens */
-    padding: 0.8rem;   /* slightly reduce padding */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
   }
 
-  .course-card img {
-    height: 120px; /* optional: fix image height for better fit */
-    object-fit: cover;
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  .course-card h2 {
-    font-size: 1rem;
+  .footer-left,
+  .footer-links,
+  .footer-form {
+    flex: 1 1 100%;
   }
 
-  .course-card p {
-    font-size: 0.8rem;
+  .footer-form form {
+    width: 100%;
   }
 
-  .course-card button,
-  .course-card button.preview-btn {
-    font-size: 0.85rem;
-    padding: 6px 8px;
-    width: 90px;
-    height: 28px;
-  }
-
-  .price {
-    font-size: 1rem;
+  .footer-form input,
+  .footer-form textarea,
+  .footer-form button {
+    font-size: 14px;
   }
 }
