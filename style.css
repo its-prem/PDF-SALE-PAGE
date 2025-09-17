@@ -317,3 +317,111 @@ body {
     font-size: 14px;
   }
 }
+/* ===== Mobile Menu Button ===== */
+.menu-btn {
+  display: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  transition: 0.3s;
+  z-index: 1001;
+}
+
+.menu-btn:hover {
+  background: #333;
+}
+
+/* ===== Sidebar (Right Side) ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* hidden initially */
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  color: #111;
+  padding: 60px 20px;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+  transition: right 0.4s ease;
+  z-index: 1002;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 18px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #111;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Gradient underline animation */
+.sidebar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #111, #555);
+  transition: width 0.4s ease;
+}
+
+.sidebar ul li a:hover::after {
+  width: 100%;
+}
+
+/* ===== Overlay ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 1000;
+}
+
+.overlay.active {
+  display: block;
+  animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Responsive: Show menu button only on small screens ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .menu-btn {
+    display: block;
+  }
+}

@@ -42,18 +42,39 @@
 <body>
 
 <!-- Navbar -->
+<!-- Navbar -->
 <nav class="navbar">
   <div class="logo-container">
     <img src="small-logo.png" alt="PM Logo" class="logo-image" />
     <div class="logo-text">PREMium Mind</div>
   </div>
-  
+
+  <!-- Normal Nav Links (Desktop ke liye) -->
   <ul class="nav-links">
     <li><a href="#">PREMium Store</a></li>
     <li><a href="#">CONTACT US</a></li>
     <li><a href="#help-form">HELP</a></li>
   </ul>
+
+  <!-- Menu Button (Mobile ke liye) -->
+  <div class="menu-btn" id="menu-btn">☰</div>
 </nav>
+
+<!-- Sidebar Menu -->
+<div class="sidebar" id="sidebar">
+  <h2>PREMium Mind</h2>
+  <ul>
+    <li><a href="#">🏠 Home</a></li>
+    <li><a href="#">🛒 Store</a></li>
+    <li><a href="#">📞 Contact</a></li>
+    <li><a href="#help-form">❓ Help</a></li>
+    <li><a href="privacy.html">⚙️ Terms & Privacy</a></li>
+  </ul>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
 
 <!-- Main Section -->
 <section class="course-section">
@@ -211,6 +232,32 @@ document.getElementById("whForm").addEventListener("submit", function(e){
   // redirect/open
   window.open(url, "_blank"); // nayi tab me, _self same tab ke liye
 });
+
+  const menuBtn = document.getElementById("menu-btn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+
+  // Open menu
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  // Close menu when clicking overlay
+  overlay.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // Close menu when clicking on any link
+  document.querySelectorAll(".sidebar ul li a").forEach(link => {
+    link.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+    });
+  });
+
+
 </script>
 
   </div>
