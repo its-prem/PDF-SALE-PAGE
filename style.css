@@ -99,7 +99,6 @@ body {
 .course-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  
 }
 
 .course-card img {
@@ -125,6 +124,7 @@ body {
   color: #555;
   margin: 0.3rem 0;
 }
+
 .course-card button.preview-btn {
   background-color: transparent;
   color: #000;
@@ -188,8 +188,8 @@ body {
   right: 0;
   height: 100%;
   width: 0%;
-  background: rgba(255, 255, 255, 0.9); /* translucent white */
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* glowing shadow */
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
   z-index: -1;
   transition: width 0.6s ease;
 }
@@ -202,10 +202,9 @@ body {
 
 .course-card button:hover {
   color: #000;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* glow around button */
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.2); /* subtle dark text glow */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
-
 
 /* ===== Footer Section ===== */
 .footer {
@@ -228,10 +227,9 @@ body {
 .footer-links,
 .footer-form {
   flex: 1 1 300px;
-  
 }
-.footer-links{
-  
+
+.footer-links {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -289,34 +287,6 @@ body {
   box-shadow: 0 0 14px rgba(255, 255, 255, 0.3);
 }
 
-/* ===== Responsive Fixes ===== */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-left,
-  .footer-links,
-  .footer-form {
-    flex: 1 1 100%;
-  }
-
-  .footer-form form {
-    width: 100%;
-  }
-
-  .footer-form input,
-  .footer-form textarea,
-  .footer-form button {
-    font-size: 14px;
-  }
-}
 /* ===== Mobile Menu Button ===== */
 .menu-btn {
   display: none;
@@ -339,15 +309,17 @@ body {
 .sidebar {
   position: fixed;
   top: 0;
-  right: -300px; /* hidden initially */
-  width: 300px;
+  right: -100%;
+  width: 280px;
+  max-width: 85%;
   height: 100%;
   background: #fff;
   color: #111;
-  padding: 60px 20px;
+  padding: 20px;
   box-shadow: -4px 0 12px rgba(0,0,0,0.15);
-  transition: right 0.4s ease;
+  transition: right 0.3s ease;
   z-index: 1002;
+  overflow-y: auto;
 }
 
 .sidebar.active {
@@ -378,7 +350,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Gradient underline animation */
 .sidebar ul li a::after {
   content: "";
   position: absolute;
@@ -416,12 +387,35 @@ body {
   to { opacity: 1; }
 }
 
-/* ===== Responsive: Show menu button only on small screens ===== */
+/* ===== Responsive Fixes ===== */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
   }
+
   .menu-btn {
     display: block;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-links,
+  .footer-form {
+    flex: 1 1 100%;
+  }
+
+  .footer-form form {
+    width: 100%;
+  }
+
+  .footer-form input,
+  .footer-form textarea,
+  .footer-form button {
+    font-size: 14px;
   }
 }
