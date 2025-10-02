@@ -1,0 +1,199 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      padding-bottom: 50px;
+    }
+
+
+    /* Main Content */
+    .main-content {
+      max-width: 600px;
+      margin: 100px auto 30px;
+      padding: 0 20px;
+    }
+
+    .header-section {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .header-section h1 {
+      font-size: 24px;
+      color: #111;
+      margin-bottom: 10px;
+    }
+
+    .header-section .greeting {
+      font-size: 18px;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .header-section .greeting span {
+      font-weight: 600;
+      color: #000;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 18px;
+      color: #111;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px 20px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      border: 2px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card.physics {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      border-color: #2196f3;
+    }
+
+    .card.chemistry {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      border-color: #4caf50;
+    }
+
+    .card.math {
+      background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+      border-color: #ffc107;
+    }
+
+    .card.pyq {
+      background: linear-gradient(135deg, #ffe0e0 0%, #ffcccc 100%);
+      border-color: #f44336;
+    }
+
+    .card.study {
+      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+      border-color: #9c27b0;
+    }
+
+    .card-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    /* All Exams Section */
+    .all-exams {
+      margin-top: 40px;
+    }
+
+    .exam-card {
+      background: #fff;
+      padding: 18px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .exam-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .exam-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .exam-icon.blue {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    }
+
+    .exam-icon.yellow {
+      background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+    }
+
+    .exam-icon.green {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    }
+
+    .exam-icon.red {
+      background: linear-gradient(135deg, #ffe0e0 0%, #ffcccc 100%);
+    }
+
+    .exam-icon.orange {
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+    }
+
+    .exam-icon.purple {
+      background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+    }
+
+    .exam-details h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 3px;
+    }
+
+    .exam-details p {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .main-content {
+        margin-top: 80px;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }

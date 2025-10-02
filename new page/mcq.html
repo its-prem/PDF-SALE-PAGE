@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics MCQ Test - Premium Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 900px;
+            animation: slideIn 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .category {
+            display: inline-block;
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .question-counter {
+            font-size: 15px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+        .question-container {
+            margin: 35px 0;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 16px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .option:hover {
+            border-color: #000;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .option.selected {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            border-color: #000;
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .option-label {
+            font-weight: 700;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-prev {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-prev:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .btn-next, .btn-submit {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            color: white;
+        }
+
+        .btn-next:hover, .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .status.answered {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        /* Results page */
+        .results {
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .results h1 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 35px;
+            font-weight: 700;
+        }
+
+        .result-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .result-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #e0e0e0;
+        }
+
+        .result-card h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .result-card .value {
+            font-size: 40px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .final-score {
+            background: linear-gradient(135deg, #000000 0%, #434343 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .final-score h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        .final-score .score {
+            font-size: 56px;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .final-score .percentage {
+            font-size: 28px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            .question {
+                font-size: 17px;
+            }
+
+            .results h1 {
+                font-size: 28px;
+            }
+
+            .result-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .option {
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app"></div>
+
+    <script>
+        const questions = [
+            { id: 1, category: "OPTICS", question: "Two plane mirrors are placed at an angle of 72° to each other. An object is placed between them. The number of images formed is:", options: ["4", "5", "6", "3"], correctAnswer: 1 },
+            { id: 2, category: "OPTICS", question: "The refractive index of diamond is 2.42. The velocity of light in diamond will be: (c = 3×10⁸ m/s)", options: ["1.24×10⁸ m/s", "2.42×10⁸ m/s", "3×10⁸ m/s", "7.26×10⁸ m/s"], correctAnswer: 0 },
+            { id: 3, category: "OPTICS", question: "A concave mirror of focal length 15 cm forms an image at 30 cm. The object distance is:", options: ["30 cm", "15 cm", "45 cm", "10 cm"], correctAnswer: 2 },
+            { id: 4, category: "OPTICS", question: "Light travels from glass (n=1.5) to water (n=1.33). The ratio of speed of light in glass to water is:", options: ["0.887", "1.13", "1.5", "1.33"], correctAnswer: 0 },
+            { id: 5, category: "OPTICS", question: "A concave lens always forms an image which is:", options: ["Virtual, erect and diminished", "Real, inverted and magnified", "Virtual, erect and magnified", "Real, erect and diminished"], correctAnswer: 0 },
+            { id: 6, category: "OPTICS", question: "Which lens can be used to correct myopia (short-sightedness)?", options: ["Concave lens", "Convex lens", "Cylindrical lens", "Bifocal lens"], correctAnswer: 1 },
+            { id: 7, category: "OPTICS", question: "The focal length of a plane mirror is:", options: ["Infinity", "Zero", "Depends on object distance", "Equal to radius of curvature"], correctAnswer: 0 },
+            { id: 8, category: "OPTICS", question: "A ray of light is incident normally on a glass slab. The angle of refraction is:", options: ["0°", "90°", "45°", "Depends on refractive index"], correctAnswer: 0 },
+            { id: 9, category: "OPTICS", question: "Silver nanoparticles scatter which color of visible light most effectively?", options: ["Green", "Red", "Blue", "Yellow"], correctAnswer: 2 },
+            { id: 10, category: "OPTICS", question: "Gold nanoparticles are used in medical applications primarily for:", options: ["Cancer treatment", "Bone fracture healing", "Blood pressure control", "Diabetes treatment"], correctAnswer: 0 },
+            { id: 11, category: "MECHANICS", question: "A bomb at rest explodes into two fragments of masses 1 kg and 3 kg. If 1 kg mass moves with velocity 12 m/s, velocity of 3 kg mass is:", options: ["4 m/s in opposite direction", "12 m/s in same direction", "36 m/s in opposite direction", "6 m/s in same direction"], correctAnswer: 0 },
+            { id: 12, category: "MECHANICS", question: "A body of mass 5 kg moving with velocity 10 m/s collides with another body at rest of mass 5 kg. After collision they move together. Final velocity is:", options: ["5 m/s", "10 m/s", "2.5 m/s", "7.5 m/s"], correctAnswer: 0 },
+            { id: 13, category: "MECHANICS", question: "A man of mass 60 kg is running with kinetic energy 1800 J. His speed is:", options: ["10 m/s", "5 m/s", "15 m/s", "20 m/s"], correctAnswer: 2 },
+            { id: 14, category: "MECHANICS", question: "The value of acceleration due to gravity at height h above earth surface is g/4. The value of h is: (R = radius of earth)", options: ["R", "2R", "3R", "4R"], correctAnswer: 1 },
+            { id: 15, category: "MECHANICS", question: "Dimensional formula of angular momentum is:", options: ["[ML²T⁻¹]", "[MLT⁻¹]", "[ML²T⁻²]", "[MLT⁻²]"], correctAnswer: 0 },
+            { id: 16, category: "MECHANICS", question: "Among Force and Weight, which pair has same dimensional formula?", options: ["Both have same dimensional formula", "Both have different dimensional formula", "Force has higher dimension", "Weight has higher dimension"], correctAnswer: 0 },
+            { id: 17, category: "MECHANICS", question: "A cyclist moving with velocity 5 m/s comes to rest in 10 meters due to friction of 50 N. Work done by friction on road is:", options: ["0 J", "-500 J", "500 J", "250 J"], correctAnswer: 1 },
+            { id: 18, category: "MECHANICS", question: "A body of mass 2 kg moves with velocity v = 5t² m/s. Work done by force in first 2 seconds is:", options: ["800 J", "400 J", "200 J", "100 J"], correctAnswer: 0 },
+            { id: 19, category: "MECHANICS", question: "A force F = 6x + 4 acts on a body. Work done in moving from x = 0 to x = 2 m is:", options: ["20 J", "16 J", "12 J", "8 J"], correctAnswer: 1 },
+            { id: 20, category: "MECHANICS", question: "The dimensional formula of G (gravitational constant) is:", options: ["[M⁻¹L³T⁻²]", "[ML³T⁻²]", "[M⁻¹L²T⁻²]", "[ML²T⁻²]"], correctAnswer: 0 },
+            { id: 21, category: "MECHANICS", question: "Planck's constant and Angular momentum have:", options: ["Different dimensional formula", "Same dimensional formula", "No relation", "Planck constant is dimensionless"], correctAnswer: 1 },
+            { id: 22, category: "MECHANICS", question: "Which is NOT a fundamental quantity in SI system?", options: ["Force", "Length", "Mass", "Time"], correctAnswer: 0 },
+            { id: 23, category: "MECHANICS", question: "Solid angle has SI unit but is:", options: ["Dimensionless", "Has dimensions [L²]", "Has dimensions [L⁻²]", "Has dimensions [L]"], correctAnswer: 0 },
+            { id: 24, category: "MECHANICS", question: "A 500 g ball moving at 20 m/s strikes a wall and bounces back at 15 m/s. Change in momentum is:", options: ["17.5 kg·m/s", "2.5 kg·m/s", "10 kg·m/s", "7.5 kg·m/s"], correctAnswer: 0 },
+            { id: 25, category: "THERMODYNAMICS", question: "Which of the following is an intensive property?", options: ["Temperature", "Volume", "Mass", "Internal energy"], correctAnswer: 0 },
+            { id: 26, category: "THERMODYNAMICS", question: "Which of the following is an extensive property?", options: ["Enthalpy", "Pressure", "Density", "Refractive index"], correctAnswer: 0 },
+            { id: 27, category: "THERMODYNAMICS", question: "Among sphere, cube and thin plate of same mass and material heated to same temperature, which cools fastest?", options: ["Thin plate", "Sphere", "Cube", "All cool at same rate"], correctAnswer: 0 },
+            { id: 28, category: "THERMODYNAMICS", question: "Rate of cooling depends on:", options: ["Surface area", "Volume only", "Mass only", "Temperature only"], correctAnswer: 3 },
+            { id: 29, category: "THERMODYNAMICS", question: "Enthalpy is a measure of:", options: ["Total heat content", "Temperature", "Pressure", "Volume"], correctAnswer: 0 },
+            { id: 30, category: "THERMODYNAMICS", question: "In which process does heat content remain constant?", options: ["Adiabatic", "Isothermal", "Isobaric", "Isochoric"], correctAnswer: 1 },
+            { id: 31, category: "ELECTROSTATICS", question: "When a charge moves in electric field, work done is converted into:", options: ["Kinetic energy", "Only potential energy", "Heat energy", "Light energy"], correctAnswer: 0 },
+            { id: 32, category: "ELECTROSTATICS", question: "A polythene piece rubbed with wool acquires negative charge because:", options: ["Electrons transfer from wool to polythene", "Protons transfer from polythene to wool", "Electrons transfer from polythene to wool", "Neutrons transfer"], correctAnswer: 0 },
+            { id: 33, category: "ELECTROSTATICS", question: "Relative permittivity is the ratio of:", options: ["Force in vacuum to force in medium", "Force in medium to force in vacuum", "Charge in vacuum to charge in medium", "Charge in medium to charge in vacuum"], correctAnswer: 1 },
+            { id: 34, category: "ELECTROSTATICS", question: "Electric field intensity has SI unit:", options: ["N/C", "N·C", "J/C", "C/N"], correctAnswer: 0 },
+            { id: 35, category: "ELECTROSTATICS", question: "Work done in moving 2 C charge through 10 V potential difference is:", options: ["20 J", "5 J", "12 J", "0.2 J"], correctAnswer: 0 },
+            { id: 36, category: "ELECTROSTATICS", question: "Dielectric constant of vacuum is:", options: ["1", "0", "Infinity", "Depends on field"], correctAnswer: 0 },
+            { id: 37, category: "MODERN PHYSICS", question: "A photon has zero rest mass. Therefore:", options: ["It cannot be slowed down", "It can be stopped", "It has no momentum", "It has no energy"], correctAnswer: 0 },
+            { id: 38, category: "MODERN PHYSICS", question: "Speed of photon in vacuum is:", options: ["3×10⁸ m/s", "Variable", "Depends on frequency", "Depends on wavelength"], correctAnswer: 0 },
+            { id: 39, category: "MODERN PHYSICS", question: "Gold nanoparticles in cancer treatment work by:", options: ["Targeting cancer cells specifically", "Increasing body temperature", "Producing radiation", "Destroying all cells"], correctAnswer: 0 },
+            { id: 40, category: "MODERN PHYSICS", question: "Nanoparticles are particles of size range:", options: ["1-100 nm", "1-10 μm", "100-1000 nm", "1-10 mm"], correctAnswer: 0 },
+            { id: 41, category: "ENERGY SOURCES", question: "Primary constituent of natural gas is:", options: ["Methane", "Ethane", "Propane", "Butane"], correctAnswer: 0 },
+            { id: 42, category: "ENERGY SOURCES", question: "Biogas contains primarily:", options: ["Methane and CO₂", "Only methane", "Only CO₂", "Hydrogen and oxygen"], correctAnswer: 0 },
+            { id: 43, category: "ENERGY SOURCES", question: "Which is a non-renewable source of energy?", options: ["Natural gas", "Solar energy", "Wind energy", "Tidal energy"], correctAnswer: 0 },
+            { id: 44, category: "ENERGY SOURCES", question: "Percentage of methane in biogas is approximately:", options: ["50-65%", "10-20%", "80-90%", "5-10%"], correctAnswer: 0 },
+            { id: 45, category: "UNITS & DIMENSIONS", question: "Dimensional formula of [(G²M⁵)/(L²S)]^(1/3) where L=angular momentum, S=stress, G=gravitational constant, M=mass is:", options: ["[L]", "[T]", "[M]", "[LT⁻¹]"], correctAnswer: 2 },
+            { id: 46, category: "UNITS & DIMENSIONS", question: "SI unit of plane angle is:", options: ["Radian", "Degree", "Steradian", "Dimensionless"], correctAnswer: 0 },
+            { id: 47, category: "UNITS & DIMENSIONS", question: "Plane angle is:", options: ["Not a fundamental quantity", "A fundamental quantity", "A base quantity", "An extensive quantity"], correctAnswer: 1 },
+            { id: 48, category: "UNITS & DIMENSIONS", question: "Steradian is SI unit of:", options: ["Solid angle", "Plane angle", "Area", "Volume"], correctAnswer: 0 },
+            { id: 49, category: "UNITS & DIMENSIONS", question: "Which has SI unit but is dimensionless?", options: ["Solid angle", "Mass", "Length", "Time"], correctAnswer: 0 },
+            { id: 50, category: "UNITS & DIMENSIONS", question: "Reynolds number is:", options: ["Dimensionless with no unit", "Has unit but dimensionless", "Has both unit and dimension", "Has dimension but no unit"], correctAnswer: 0 }
+        ];
+
+        let currentQuestion = 0;
+        let answers = {};
+        let showResults = false;
+
+        function render() {
+            const app = document.getElementById('app');
+            
+            if (showResults) {
+                app.innerHTML = renderResults();
+            } else {
+                app.innerHTML = renderQuestion();
+            }
+            
+            attachEventListeners();
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQuestion];
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            const isLastQuestion = currentQuestion === questions.length - 1;
+            
+            return `
+                <div class="header">
+                    <div class="header-top">
+                        <div class="category">${q.category}</div>
+                        <div class="question-counter">Question ${currentQuestion + 1} / ${questions.length}</div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: ${progress}%"></div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question">${q.question}</div>
+                    
+                    <div class="options">
+                        ${q.options.map((opt, idx) => `
+                            <div class="option ${answers[currentQuestion] === idx ? 'selected' : ''}" data-index="${idx}">
+                                <span class="option-label">${String.fromCharCode(65 + idx)}.</span>
+                                <span>${opt}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button class="btn btn-prev" id="prevBtn" ${currentQuestion === 0 ? 'disabled' : ''}>
+                        ← Previous
+                    </button>
+                    ${isLastQuestion ? 
+                        '<button class="btn btn-submit" id="submitBtn">✓ Final Submit</button>' :
+                        '<button class="btn btn-next" id="nextBtn">Next →</button>'
+                    }
+                </div>
+
+                <div class="status ${answers[currentQuestion] !== undefined ? 'answered' : ''}">
+                    ${answers[currentQuestion] !== undefined ? '✓ Answered' : 'Not Answered'}
+                </div>
+            `;
+        }
+
+        function renderResults() {
+            const results = calculateResults();
+            const percentage = ((results.correct / questions.length) * 100).toFixed(1);
+            
+            return `
+                <div class="results">
+                    <h1>Test Results</h1>
+                    
+                    <div class="result-cards">
+                        <div class="result-card">
+                            <h3>✓ Correct</h3>
+                            <div class="value">${results.correct}</div>
+                        </div>
+                        <div class="result-card">
+                            <h3>✗ Wrong</h3>
+                            <div class="value">${results.wrong}</div>
+                        </div>
+                        <div class="result-card">
+                            <h3>⊘ Skipped</h3>
+                            <div class="value">${results.skipped}</div>
+                        </div>
+                    </div>
+
+                    <div class="final-score">
+                        <h2>Final Score</h2>
+                        <div class="score">${results.correct}/${questions.length}</div>
+                        <div class="percentage">${percentage}%</div>
+                    </div>
+
+                    <button class="btn btn-submit" id="restartBtn">↻ Restart Test</button>
+                </div>
+            `;
+        }
+
+        function calculateResults() {
+            let correct = 0, wrong = 0, skipped = 0;
+            
+            questions.forEach((q, idx) => {
+                if (answers[idx] === undefined) {
+                    skipped++;
+                } else if (answers[idx] === q.correctAnswer) {
+                    correct++;
+                } else {
+                    wrong++;
+                }
+            });
+            
+            return { correct, wrong, skipped };
+        }
+
+        function attachEventListeners() {
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    answers[currentQuestion] = index;
+                    render();
+                });
+            });
+
+            const prevBtn = document.getElementById('prevBtn');
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentQuestion > 0) {
+                        currentQuestion--;
+                        render();
+                    }
+                });
+            }
+
+            const nextBtn = document.getElementById('nextBtn');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    if (currentQuestion < questions.length - 1) {
+                        currentQuestion++;
+                        render();
+                    }
+                });
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', () => {
+                    showResults = true;
+                    render();
+                });
+            }
+
+            const restartBtn = document.getElementById('restartBtn');
+            if (restartBtn) {
+                restartBtn.addEventListener('click', () => {
+                    currentQuestion = 0;
+                    answers = {};
+                    showResults = false;
+                    render();
+                });
+            }
+        }
+
+        // Initialize app
+        render();
+    </script>
+</body>
+</html>

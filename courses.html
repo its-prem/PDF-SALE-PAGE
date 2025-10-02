@@ -7,6 +7,7 @@
   <title>Terms & Conditions | PREMium Mind</title>
   <link rel="icon" type="image/png" href="small-logo.png">
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="coursestyl.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,9 +93,11 @@
 
   <ul class="nav-links">
     <li><a href="index.html">PREMium Store</a></li>
-    <!-- <li><a href="resume.html">Resume</a></li> -->
-    <li><a href="#help-form">Help</a></li>
+    <li><a href="courses.html" class="protected-route" id="coursesLinkNav">PREMium Courses</a></li>
+    <li><a href="#help-form">CONTACT US</a></li>
+    <li><a href="#help-form">HELP</a></li>
   </ul>
+
 
   <div class="menu-btn" id="menu-btn">☰</div>
 </nav>
@@ -110,7 +113,98 @@
     <li><a href="termcondition.html">⚙️ Terms & Privacy</a></li>
   </ul>
 </div>
-    <script>
+
+<!-- Main Content -->
+<div class="main-content">
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1>PREMium Batch</h1>
+    <p class="greeting">Hey <span id="studentName">Student</span> 👋</p>
+  </div>
+
+  <!-- Popular Exams Section -->
+  <div class="section-title">Popular Exams</div>
+  
+  <div class="cards-grid">
+    <div class="card physics" onclick="window.location.href='new page/mcq.html'">
+      <div class="card-icon">⚛️</div>
+      <div class="card-title">PHYSICS</div>
+    </div>
+
+    <div class="card chemistry" onclick="window.location.href='chemistry.html'">
+      <div class="card-icon">🔬</div>
+      <div class="card-title">CHEMISTRY</div>
+    </div>
+
+    <div class="card math" onclick="window.location.href='math.html'">
+      <div class="card-icon">📐</div>
+      <div class="card-title">MATH</div>
+    </div>
+
+    <div class="card pyq" onclick="window.location.href='pyq.html'">
+      <div class="card-icon">📝</div>
+      <div class="card-title">PYQ PRACTICE</div>
+    </div>
+  </div>
+
+  <!-- All Exams Section -->
+  <div class="all-exams">
+    <div class="section-title">All Exams</div>
+
+    <div class="exam-card" onclick="window.location.href='engineering-medical.html'">
+      <div class="exam-icon blue">⚛️</div>
+      <div class="exam-details">
+        <h3>Engineering & Medical Exams</h3>
+        <p>( College & Job )</p>
+      </div>
+    </div>
+
+    <div class="exam-card" onclick="window.location.href='college-entrance.html'">
+      <div class="exam-icon yellow">📄</div>
+      <div class="exam-details">
+        <h3>College Entrance Exams ( UG & PG )</h3>
+        <p>Undergraduate & Postgraduate</p>
+      </div>
+    </div>
+
+    <div class="exam-card" onclick="window.location.href='schools-boards.html'">
+      <div class="exam-icon green">🏆</div>
+      <div class="exam-details">
+        <h3>Schools, Boards & Olympiads</h3>
+        <p>CBSE, ICSE, State Boards</p>
+      </div>
+    </div>
+
+    <div class="exam-card" onclick="window.location.href='government-jobs.html'">
+      <div class="exam-icon red">🏛️</div>
+      <div class="exam-details">
+        <h3>All Government Job Exams</h3>
+        <p>SSC, Railway, Banking & more</p>
+      </div>
+    </div>
+
+    <div class="exam-card" onclick="window.location.href='banking-finance.html'">
+      <div class="exam-icon orange">🧮</div>
+      <div class="exam-details">
+        <h3>CA, CS, Banking & Finance Courses</h3>
+        <p>Professional courses</p>
+      </div>
+    </div>
+
+    <div class="exam-card" onclick="window.location.href='study-materials.html'">
+      <div class="exam-icon purple">📚</div>
+      <div class="exam-details">
+        <h3>Study Materials</h3>
+        <p>Notes, Books & Resources</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
   const menuBtn = document.getElementById("menu-btn");
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
