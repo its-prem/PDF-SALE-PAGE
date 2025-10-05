@@ -143,6 +143,7 @@ html {
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
   display: flex;
   gap: 8px;
+  
 }
 
 .profile-avatar {
@@ -160,6 +161,7 @@ html {
 
 .profile-details {
   color: #f4f4f4;
+  
 }
 
 .profile-greeting {
@@ -449,6 +451,8 @@ html {
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
+  
+  
 }
 
 .subject-gradient {
@@ -470,11 +474,7 @@ html {
 }
 
 .subject-card.math .subject-gradient {
-  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-}
-
-.subject-card.pyq .subject-gradient {
-  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
 }
 
 .subject-card:hover {
@@ -504,10 +504,6 @@ html {
   border-color: #4caf50;
 }
 
-.subject-card.pyq.active {
-  border-color: #9c27b0;
-}
-
 .subject-card.math.active {
   border-color: #ffc107;
 }
@@ -518,6 +514,8 @@ html {
   text-align: left;
   display: flex;
   gap: 10px;
+  
+  
 }
 
 .subject-icon {
@@ -554,14 +552,6 @@ html {
   color: #667eea;
 }
 
-.subject-card.pyq:hover .subject-arrow {
-  color: #9c27b0;
-}
-
-.subject-card.math:hover .subject-arrow {
-  color: #ffc107;
-}
-
 /* ========== CHAPTERS ========== */
 .chapters-container {
   display: none;
@@ -570,6 +560,7 @@ html {
 .chapters-container.active {
   display: block;
   animation: fadeInUp 0.5s ease;
+ 
 }
 
 @keyframes fadeInUp {
@@ -603,6 +594,7 @@ html {
 .chapters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  
 }
 
 .premium-chapter-card {
@@ -615,6 +607,7 @@ html {
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
+  
 }
 
 .premium-chapter-card::before {
@@ -626,6 +619,7 @@ html {
   height: 100%;
   transition: width 0.3s ease;
 }
+
 
 .premium-chapter-card:hover {
   transform: translateY(-5px);
@@ -649,10 +643,6 @@ html {
   background: #ffc107;
 }
 
-.premium-chapter-card.pyq::before {
-  background: #9c27b0;
-}
-
 .premium-chapter-card.physics:hover {
   border-color: #2196f3;
 }
@@ -663,10 +653,6 @@ html {
 
 .premium-chapter-card.math:hover {
   border-color: #ffc107;
-}
-
-.premium-chapter-card.pyq:hover {
-  border-color: #9c27b0;
 }
 
 .chapter-header {
@@ -685,10 +671,6 @@ html {
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-}
-
-.chapter-badge.pyq-badge {
-  background: linear-gradient(135deg, #9c27b0 0%, #7b1fa2 100%);
 }
 
 .difficulty {
@@ -766,10 +748,6 @@ html {
   transition: width 0.3s ease;
 }
 
-.progress.pyq-progress {
-  background: linear-gradient(90deg, #9c27b0 0%, #7b1fa2 100%);
-}
-
 /* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
   .nav-links {
@@ -789,6 +767,7 @@ html {
     width: 107px;
   }
 
+  /* Show menu button only on mobile */
   .menu-toggle-btn {
     display: flex;
   }
@@ -868,6 +847,7 @@ html {
 
   .premium-chapter-card {
     padding: 15px;
+    
   }
 
   .chapter-name {
